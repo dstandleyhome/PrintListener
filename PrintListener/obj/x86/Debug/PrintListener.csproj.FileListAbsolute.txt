@@ -5,3 +5,8 @@ c:\testcode\PrintListener\PrintListener\obj\x86\Debug\PrintListener.exe
 c:\testcode\PrintListener\PrintListener\obj\x86\Debug\PrintListener.pdb
 E:\Projects\PrintListener\obj\x86\Debug\PrintListener.exe
 E:\Projects\PrintListener\obj\x86\Debug\PrintListener.pdb
+E:\Projects\PrintListener\PrintListener\obj\x86\Debug\PrintListener.exe
+E:\Projects\PrintListener\PrintListener\obj\x86\Debug\PrintListener.pdb
+E:\Projects\PrintListener\PrintListener\bin\Debug\PrintListener.exe
+E:\Projects\PrintListener\PrintListener\bin\Debug\PrintListener.pdb
+E:\Projects\PrintListener\PrintListener\obj\x86\Debug\ResolveAssemblyReference.cache

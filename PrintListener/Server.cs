@@ -57,8 +57,6 @@ namespace PrintListener
                         using (BinaryWriter writer = new BinaryWriter(stream))
                         {
                             writer.Write(message);
-                            //writer.Write(bytesRead);
-                            writer.Flush();
                             writer.Close();
                         }
                     }
@@ -83,7 +81,6 @@ namespace PrintListener
             Console.WriteLine("file complete");
 
             RawPrinterHelper.SendFileToPrinter("Bullzip PDF Printer", "C:\\" + fileName);
-
         }
     }
 }
