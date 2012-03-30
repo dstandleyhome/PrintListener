@@ -13,10 +13,12 @@ namespace PrintListener
     {
         private TcpListener tcpListener;
         private Thread listenThread;
+        private string _printerName;
 
-        public Server()
+        public Server(string printerName, int port)
         {
-            this.tcpListener = new TcpListener(IPAddress.Any, 515);
+            this._printerName = printerName;
+            this.tcpListener = new TcpListener(IPAddress.Any, port);
             this.listenThread = new Thread(new ThreadStart(ListenForClients));
             this.listenThread.Start();
         }
@@ -82,7 +84,7 @@ namespace PrintListener
             tcpClient.Close();
             Console.WriteLine("file complete");
 
-            RawPrinterHelper.SendFileToPrinter("Bullzip PDF Printer", "C:\\" + fileName);
+            RawPrinterHelper.SendFileToPrinter(_printerName, "C:\\" + fileName);
         }
 
         private void HandleClientBytesComm(object client)
@@ -132,7 +134,7 @@ namespace PrintListener
             IntPtr pointer = Marshal.AllocHGlobal(documentByteArray.Length);
             Marshal.Copy(documentByteArray, 0, pointer, documentByteArray.Length);
 
-            RawPrinterHelper.SendBytesToPrinter("Bullzip PDF Printer", pointer, documentBytes);
+            RawPrinterHelper.SendBytesToPrinter(_printerName, pointer, documentBytes);
 
             Marshal.FreeHGlobal(pointer);
         }
