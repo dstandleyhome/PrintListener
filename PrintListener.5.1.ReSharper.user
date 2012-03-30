@@ -3,14 +3,28 @@
     <string />
     <integer />
     <boolean>
+      <setting name="livetemplates.csharp.usevar">True</setting>
       <setting name="SolutionAnalysisEnabled">False</setting>
     </boolean>
   </SettingsComponent>
   <RecentFiles>
     <RecentFiles>
-      <File id="8607D37A-67E1-40DE-8A86-5041017EA8DE/f:Server.cs" caret="572" fromTop="20" />
+      <File id="8607D37A-67E1-40DE-8A86-5041017EA8DE/f:RawPrinterHelper.cs" caret="2982" fromTop="12" />
+      <File id="8607D37A-67E1-40DE-8A86-5041017EA8DE/f:Server.cs" caret="4391" fromTop="127" />
     </RecentFiles>
-    <RecentEdits />
+    <RecentEdits>
+      <File id="8607D37A-67E1-40DE-8A86-5041017EA8DE/f:RawPrinterHelper.cs" caret="5315" fromTop="13" />
+      <File id="8607D37A-67E1-40DE-8A86-5041017EA8DE/f:RawPrinterHelper.cs" caret="2982" fromTop="12" />
+      <File id="8607D37A-67E1-40DE-8A86-5041017EA8DE/f:Server.cs" caret="1973" fromTop="22" />
+      <File id="8607D37A-67E1-40DE-8A86-5041017EA8DE/f:Server.cs" caret="2683" fromTop="5" />
+      <File id="8607D37A-67E1-40DE-8A86-5041017EA8DE/f:Server.cs" caret="3041" fromTop="13" />
+      <File id="8607D37A-67E1-40DE-8A86-5041017EA8DE/f:Server.cs" caret="1049" fromTop="9" />
+      <File id="8607D37A-67E1-40DE-8A86-5041017EA8DE/f:Server.cs" caret="2996" fromTop="7" />
+      <File id="8607D37A-67E1-40DE-8A86-5041017EA8DE/f:Server.cs" caret="3316" fromTop="16" />
+      <File id="8607D37A-67E1-40DE-8A86-5041017EA8DE/f:Server.cs" caret="3390" fromTop="18" />
+      <File id="8607D37A-67E1-40DE-8A86-5041017EA8DE/f:Server.cs" caret="4064" fromTop="13" />
+      <File id="8607D37A-67E1-40DE-8A86-5041017EA8DE/f:Server.cs" caret="4327" fromTop="18" />
+    </RecentEdits>
   </RecentFiles>
   <NAntValidationSettings>
     <NAntPath value="" />
@@ -22,4 +36,50 @@
     <NUnitInstallDir>C:\Program Files (x86)\NUnit 2.6\bin\net-2.0\</NUnitInstallDir>
     <UseAddins>Never</UseAddins>
   </UnitTestRunnerNUnit>
+  <CompletionStatisticsManager>
+    <ItemStatistics item="Default">
+      <Item value="message" priority="2" />
+      <Item value="byte" priority="4" />
+      <Item value="new" priority="1" />
+      <Item value="ArrayList`0" priority="0" />
+      <Item value="document" priority="7" />
+      <Item value="RawPrinterHelper`0" priority="0" />
+      <Item value="typeof" priority="1" />
+      <Item value="GCHandle`0" priority="0" />
+      <Item value="IntPtr`0" priority="1" />
+      <Item value="pinnedArray" priority="1" />
+      <Item value="pointer" priority="2" />
+      <Item value="int" priority="0" />
+      <Item value="documentBytes" priority="1" />
+      <Item value="bytesRead" priority="0" />
+      <Item value="documentByteArray" priority="5" />
+      <Item value="CopyTo`0" priority="0" />
+      <Item value="foreach" priority="0" />
+      <Item value="Marshal`0" priority="2" />
+      <Item value="Length" priority="1" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Collections.ArrayList">
+      <Item value="Add`0" priority="0" />
+      <Item value="ToArray`0" priority="2" />
+      <Item value="Count" priority="1" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@PrintListener.RawPrinterHelper">
+      <Item value="SendBytesToPrinter`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@System.Runtime.InteropServices.GCHandle">
+      <Item value="Alloc`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Runtime.InteropServices.GCHandle">
+      <Item value="AddrOfPinnedObject`0" priority="0" />
+      <Item value="Free`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Array">
+      <Item value="Length" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@System.Runtime.InteropServices.Marshal">
+      <Item value="AllocHGlobal`0" priority="0" />
+      <Item value="Copy`0" priority="0" />
+      <Item value="FreeHGlobal`0" priority="0" />
+    </ItemStatistics>
+  </CompletionStatisticsManager>
 </Configuration>

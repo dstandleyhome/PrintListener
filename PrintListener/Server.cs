@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections;
 using System.IO;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Net.Sockets;
 using System.Threading;
@@ -30,7 +32,7 @@ namespace PrintListener
 
                 //create a thread to handle communication 
                 //with connected client
-                Thread clientThread = new Thread(new ParameterizedThreadStart(HandleClientComm));
+                Thread clientThread = new Thread(new ParameterizedThreadStart(HandleClientBytesComm));
                 clientThread.Start(client);
             }
         }
@@ -81,6 +83,58 @@ namespace PrintListener
             Console.WriteLine("file complete");
 
             RawPrinterHelper.SendFileToPrinter("Bullzip PDF Printer", "C:\\" + fileName);
+        }
+
+        private void HandleClientBytesComm(object client)
+        {
+            TcpClient tcpClient = (TcpClient) client;
+            NetworkStream clientStream = tcpClient.GetStream();
+
+            byte[] message = new byte[4096];
+            int bytesRead;
+            ArrayList document = new ArrayList();
+            int documentBytes = 0;
+
+            while (true)
+            {
+                try
+                {
+                    //blocks until a client sends a message
+                    bytesRead = clientStream.Read(message, 0, 4096);
+                    documentBytes += bytesRead;
+                    foreach (var messageByte in message)
+                    {
+                        document.Add(messageByte);
+                    }
+                }
+                catch
+                {
+                    //a socket error has occured
+                    break;
+                }
+
+                if (bytesRead == 0)
+                {
+                    //the client has disconnected from the server
+                    break;
+                }
+
+                Console.Write(".");
+
+            }
+
+            tcpClient.Close();
+            Console.WriteLine("file complete");
+
+            byte[] documentByteArray = new byte[document.Count];
+            document.CopyTo(documentByteArray,0);
+            //Get the unmanaged handle for the byte array
+            IntPtr pointer = Marshal.AllocHGlobal(documentByteArray.Length);
+            Marshal.Copy(documentByteArray, 0, pointer, documentByteArray.Length);
+
+            RawPrinterHelper.SendBytesToPrinter("Bullzip PDF Printer", pointer, documentBytes);
+
+            Marshal.FreeHGlobal(pointer);
         }
     }
 }

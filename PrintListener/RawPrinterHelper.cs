@@ -49,7 +49,7 @@ namespace PrintListener
             DOCINFOA di = new DOCINFOA();
             bool bSuccess = false; // Assume failure unless you specifically succeed.
 
-            di.pDocName = "My C#.NET RAW Document";
+            di.pDocName = "RAW Document";
             di.pDataType = "RAW";
 
             // Open the printer.
@@ -104,6 +104,7 @@ namespace PrintListener
             Marshal.FreeCoTaskMem(pUnmanagedBytes);
             return bSuccess;
         }
+
         public static bool SendStringToPrinter(string szPrinterName, string szString)
         {
             IntPtr pBytes;
