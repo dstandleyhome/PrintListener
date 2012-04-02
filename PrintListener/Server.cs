@@ -29,6 +29,7 @@ namespace PrintListener
 
             while (true)
             {
+                Console.WriteLine("Ready...");
                 //blocks until a client has connected to the server
                 TcpClient client = this.tcpListener.AcceptTcpClient();
 
@@ -97,6 +98,8 @@ namespace PrintListener
             ArrayList document = new ArrayList();
             int documentBytes = 0;
 
+            Console.Write("Printing...");
+
             while (true)
             {
                 try
@@ -126,7 +129,8 @@ namespace PrintListener
             }
 
             tcpClient.Close();
-            Console.WriteLine("file complete");
+            Console.Write("file complete");
+            Console.WriteLine("");
 
             byte[] documentByteArray = new byte[document.Count];
             document.CopyTo(documentByteArray,0);
