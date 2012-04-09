@@ -9,31 +9,42 @@
   </SettingsComponent>
   <RecentFiles>
     <RecentFiles>
-      <File id="8607D37A-67E1-40DE-8A86-5041017EA8DE/f:RawPrinterHelper.cs" caret="1419" fromTop="12" />
-      <File id="8607D37A-67E1-40DE-8A86-5041017EA8DE/f:Server.cs" caret="1303" fromTop="31" />
-      <File id="8607D37A-67E1-40DE-8A86-5041017EA8DE/f:Program.cs" caret="566" fromTop="12" />
+      <File id="8607D37A-67E1-40DE-8A86-5041017EA8DE/f:TypeOfPrinter.cs" caret="51" fromTop="4" />
+      <File id="8607D37A-67E1-40DE-8A86-5041017EA8DE/f:RawPrinterHelper.cs" caret="3604" fromTop="27" />
+      <File id="8607D37A-67E1-40DE-8A86-5041017EA8DE/f:Server.cs" caret="1394" fromTop="30" />
+      <File id="8607D37A-67E1-40DE-8A86-5041017EA8DE/f:Program.cs" caret="844" fromTop="14" />
     </RecentFiles>
     <RecentEdits>
-      <File id="8607D37A-67E1-40DE-8A86-5041017EA8DE/f:RawPrinterHelper.cs" caret="5315" fromTop="13" />
-      <File id="8607D37A-67E1-40DE-8A86-5041017EA8DE/f:RawPrinterHelper.cs" caret="2982" fromTop="12" />
-      <File id="8607D37A-67E1-40DE-8A86-5041017EA8DE/f:Server.cs" caret="4393" fromTop="22" />
-      <File id="8607D37A-67E1-40DE-8A86-5041017EA8DE/f:Server.cs" caret="4393" fromTop="13" />
-      <File id="8607D37A-67E1-40DE-8A86-5041017EA8DE/f:Server.cs" caret="4393" fromTop="7" />
-      <File id="8607D37A-67E1-40DE-8A86-5041017EA8DE/f:Server.cs" caret="4393" fromTop="16" />
-      <File id="8607D37A-67E1-40DE-8A86-5041017EA8DE/f:Server.cs" caret="4393" fromTop="18" />
-      <File id="8607D37A-67E1-40DE-8A86-5041017EA8DE/f:Server.cs" caret="4393" fromTop="13" />
-      <File id="8607D37A-67E1-40DE-8A86-5041017EA8DE/f:Server.cs" caret="4393" fromTop="12" />
-      <File id="8607D37A-67E1-40DE-8A86-5041017EA8DE/f:Server.cs" caret="4393" fromTop="15" />
-      <File id="8607D37A-67E1-40DE-8A86-5041017EA8DE/f:Server.cs" caret="1162" fromTop="28" />
-      <File id="8607D37A-67E1-40DE-8A86-5041017EA8DE/f:Server.cs" caret="548" fromTop="7" />
-      <File id="8607D37A-67E1-40DE-8A86-5041017EA8DE/f:Server.cs" caret="480" fromTop="8" />
-      <File id="8607D37A-67E1-40DE-8A86-5041017EA8DE/f:Server.cs" caret="2713" fromTop="33" />
-      <File id="8607D37A-67E1-40DE-8A86-5041017EA8DE/f:Server.cs" caret="4392" fromTop="26" />
+      <File id="8607D37A-67E1-40DE-8A86-5041017EA8DE/f:Server.cs" caret="5066" fromTop="12" />
+      <File id="8607D37A-67E1-40DE-8A86-5041017EA8DE/f:Server.cs" caret="5066" fromTop="15" />
+      <File id="8607D37A-67E1-40DE-8A86-5041017EA8DE/f:Server.cs" caret="796" fromTop="7" />
+      <File id="8607D37A-67E1-40DE-8A86-5041017EA8DE/f:Server.cs" caret="4663" fromTop="33" />
       <File id="8607D37A-67E1-40DE-8A86-5041017EA8DE/f:Program.cs" caret="141" fromTop="6" />
-      <File id="8607D37A-67E1-40DE-8A86-5041017EA8DE/f:Program.cs" caret="762" fromTop="20" />
-      <File id="8607D37A-67E1-40DE-8A86-5041017EA8DE/f:Program.cs" caret="650" fromTop="17" />
-      <File id="8607D37A-67E1-40DE-8A86-5041017EA8DE/f:Program.cs" caret="1315" fromTop="37" />
-      <File id="8607D37A-67E1-40DE-8A86-5041017EA8DE/f:Program.cs" caret="970" fromTop="28" />
+      <File id="8607D37A-67E1-40DE-8A86-5041017EA8DE/f:Program.cs" caret="874" fromTop="20" />
+      <File id="8607D37A-67E1-40DE-8A86-5041017EA8DE/f:Server.cs" caret="986" fromTop="17" />
+      <File id="8607D37A-67E1-40DE-8A86-5041017EA8DE/f:Server.cs" caret="4663" fromTop="11" />
+      <File id="8607D37A-67E1-40DE-8A86-5041017EA8DE/f:Server.cs" caret="4663" fromTop="11" />
+      <File id="8607D37A-67E1-40DE-8A86-5041017EA8DE/f:Server.cs" caret="4663" fromTop="23" />
+      <File id="8607D37A-67E1-40DE-8A86-5041017EA8DE/f:Server.cs" caret="4663" fromTop="19" />
+      <File id="8607D37A-67E1-40DE-8A86-5041017EA8DE/f:Program.cs" caret="249" fromTop="4" />
+      <File id="8607D37A-67E1-40DE-8A86-5041017EA8DE/f:Program.cs" caret="2034" fromTop="33" />
+      <File id="8607D37A-67E1-40DE-8A86-5041017EA8DE/f:Program.cs" caret="848" fromTop="18" />
+      <File id="8607D37A-67E1-40DE-8A86-5041017EA8DE/f:TypeOfPrinter.cs" caret="37" fromTop="2" />
+      <File id="8607D37A-67E1-40DE-8A86-5041017EA8DE/f:Server.cs" caret="804" fromTop="18" />
+      <File id="8607D37A-67E1-40DE-8A86-5041017EA8DE/f:Server.cs" caret="5065" fromTop="27" />
+      <File id="8607D37A-67E1-40DE-8A86-5041017EA8DE/f:Server.cs" caret="3262" fromTop="34" />
+      <File id="8607D37A-67E1-40DE-8A86-5041017EA8DE/f:Server.cs" caret="2479" fromTop="24" />
+      <File id="8607D37A-67E1-40DE-8A86-5041017EA8DE/f:Server.cs" caret="796" fromTop="28" />
+      <File id="8607D37A-67E1-40DE-8A86-5041017EA8DE/f:Server.cs" caret="805" fromTop="16" />
+      <File id="8607D37A-67E1-40DE-8A86-5041017EA8DE/f:Server.cs" caret="413" fromTop="8" />
+      <File id="8607D37A-67E1-40DE-8A86-5041017EA8DE/f:Server.cs" caret="604" fromTop="14" />
+      <File id="8607D37A-67E1-40DE-8A86-5041017EA8DE/f:Server.cs" caret="1804" fromTop="25" />
+      <File id="8607D37A-67E1-40DE-8A86-5041017EA8DE/f:Server.cs" caret="1687" fromTop="26" />
+      <File id="8607D37A-67E1-40DE-8A86-5041017EA8DE/f:Program.cs" caret="1764" fromTop="34" />
+      <File id="8607D37A-67E1-40DE-8A86-5041017EA8DE/f:Program.cs" caret="1626" fromTop="31" />
+      <File id="8607D37A-67E1-40DE-8A86-5041017EA8DE/f:Program.cs" caret="730" fromTop="11" />
+      <File id="8607D37A-67E1-40DE-8A86-5041017EA8DE/f:Program.cs" caret="1125" fromTop="23" />
+      <File id="8607D37A-67E1-40DE-8A86-5041017EA8DE/f:Program.cs" caret="1550" fromTop="33" />
     </RecentEdits>
   </RecentFiles>
   <NAntValidationSettings>
@@ -49,7 +60,7 @@
   <CompletionStatisticsManager>
     <ItemStatistics item="Default">
       <Item value="message" priority="2" />
-      <Item value="byte" priority="4" />
+      <Item value="byte" priority="5" />
       <Item value="new" priority="2" />
       <Item value="ArrayList`0" priority="0" />
       <Item value="document" priority="7" />
@@ -70,29 +81,40 @@
       <Item value="string" priority="5" />
       <Item value="printerName" priority="4" />
       <Item value="client" priority="0" />
-      <Item value="private" priority="0" />
-      <Item value="this" priority="0" />
+      <Item value="private" priority="1" />
+      <Item value="this" priority="3" />
       <Item value="_printerName" priority="1" />
-      <Item value="if" priority="1" />
+      <Item value="if" priority="2" />
       <Item value="args" priority="2" />
-      <Item value="var" priority="3" />
+      <Item value="var" priority="4" />
       <Item value="HttpListener`0" priority="0" />
-      <Item value="argsList" priority="3" />
-      <Item value="p" priority="2" />
+      <Item value="argsList" priority="4" />
+      <Item value="p" priority="3" />
       <Item value="pSwitch" priority="0" />
       <Item value="pSwitchIndex" priority="0" />
       <Item value="portSwitchIndex" priority="1" />
       <Item value="Convert`0" priority="0" />
       <Item value="portNumber" priority="2" />
-      <Item value="Console`0" priority="2" />
+      <Item value="Console`0" priority="6" />
       <Item value="static" priority="0" />
       <Item value="void" priority="0" />
-      <Item value="printerSwitchIndex" priority="0" />
+      <Item value="printerSwitchIndex" priority="1" />
       <Item value="ShowUsage`0" priority="1" />
       <Item value="try" priority="0" />
       <Item value="return" priority="1" />
       <Item value="System" priority="2" />
       <Item value="Environment`0" priority="2" />
+      <Item value="printFileOutputPath" priority="0" />
+      <Item value="public" priority="0" />
+      <Item value="enum" priority="0" />
+      <Item value="TypeOfPrinter`0" priority="5" />
+      <Item value="Raw" priority="0" />
+      <Item value="switch" priority="1" />
+      <Item value="case" priority="4" />
+      <Item value="break" priority="2" />
+      <Item value="printerSpec" priority="0" />
+      <Item value="typeOfPrinter" priority="0" />
+      <Item value="printFileOutputPathIndex" priority="1" />
     </ItemStatistics>
     <ItemStatistics item="Qualified:System.Collections.ArrayList">
       <Item value="Add`0" priority="0" />
@@ -120,19 +142,21 @@
     </ItemStatistics>
     <ItemStatistics item="Qualified:PrintListener.Server">
       <Item value="_printerName" priority="0" />
+      <Item value="_printerSpec" priority="0" />
+      <Item value="_printerType" priority="1" />
     </ItemStatistics>
     <ItemStatistics item="Qualified:System.Collections.Generic.List`1">
       <Item value="Find`0" priority="0" />
-      <Item value="FindIndex`0" priority="1" />
+      <Item value="FindIndex`0" priority="2" />
     </ItemStatistics>
     <ItemStatistics item="Qualified:System.String">
-      <Item value="Contains`0" priority="1" />
+      <Item value="Contains`0" priority="2" />
     </ItemStatistics>
     <ItemStatistics item="Qualified:@System.Convert">
       <Item value="ToInt16`0" priority="0" />
     </ItemStatistics>
     <ItemStatistics item="Qualified:@System.Console">
-      <Item value="WriteLine`0" priority="2" />
+      <Item value="WriteLine`0" priority="6" />
     </ItemStatistics>
     <ItemStatistics item="Qualified:@System.Int32">
       <Item value="TryParse`0" priority="0" />
@@ -140,6 +164,10 @@
     <ItemStatistics item="Qualified:@System.Environment">
       <Item value="ExitCode" priority="0" />
       <Item value="Exit`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@TypeOfPrinter">
+      <Item value="Raw" priority="1" />
+      <Item value="File" priority="1" />
     </ItemStatistics>
   </CompletionStatisticsManager>
 </Configuration>

@@ -13,11 +13,14 @@ namespace PrintListener
     {
         private TcpListener tcpListener;
         private Thread listenThread;
-        private string _printerName;
+        private string _printerSpec;
+        private TypeOfPrinter _printerType;
 
-        public Server(string printerName, int port)
+        public Server(string printerSpec, int port, TypeOfPrinter typeOfPrinter)
         {
-            this._printerName = printerName;
+
+            this._printerSpec = printerSpec;
+            this._printerType = typeOfPrinter;
             this.tcpListener = new TcpListener(IPAddress.Any, port);
             this.listenThread = new Thread(new ThreadStart(ListenForClients));
             this.listenThread.Start();
@@ -35,8 +38,20 @@ namespace PrintListener
 
                 //create a thread to handle communication 
                 //with connected client
-                Thread clientThread = new Thread(new ParameterizedThreadStart(HandleClientBytesComm));
-                clientThread.Start(client);
+
+                switch (_printerType)
+                {
+                    case TypeOfPrinter.Raw:
+                        Thread clientThread = new Thread(new ParameterizedThreadStart(HandleClientBytesComm));
+                        clientThread.Start(client);
+                        break;
+
+                    case TypeOfPrinter.File:
+                        Thread fileClientThread = new Thread(new ParameterizedThreadStart(HandleClientComm));
+                        fileClientThread.Start(client);
+                        break;
+                }
+
             }
         }
 
@@ -48,16 +63,38 @@ namespace PrintListener
             byte[] message = new byte[4096];
             int bytesRead;
             string fileName = Guid.NewGuid().ToString();
+            var firstRead = true;
+
+            if(!this._printerSpec.EndsWith(@"\"))
+            {
+                this._printerSpec += @"\";
+            }
 
             while (true)
             {
-                bytesRead = 0;
-
                 try
                 {
                     //blocks until a client sends a message
                     bytesRead = clientStream.Read(message, 0, 4096);
-                    using (FileStream stream = new FileStream("C:\\" + fileName, FileMode.Append))
+
+                    //Inspect first message to try to determine file extension.
+                    if(firstRead)
+                    {
+                        var firstMessage = System.Text.Encoding.ASCII.GetString(message);
+                        if(firstMessage.StartsWith("BM"))
+                        {
+                            fileName += ".bmp";
+                        }
+
+                        if(firstMessage.StartsWith("%PDF"))
+                        {
+                            fileName += ".pdf";
+                        }
+
+                        firstRead = false;
+                    }
+
+                    using (FileStream stream = new FileStream(this._printerSpec + fileName, FileMode.Append))
                     {
                         using (BinaryWriter writer = new BinaryWriter(stream))
                         {
@@ -69,6 +106,7 @@ namespace PrintListener
                 catch
                 {
                     //a socket error has occured
+                    Console.WriteLine("Socket Error!");
                     break;
                 }
 
@@ -85,7 +123,7 @@ namespace PrintListener
             tcpClient.Close();
             Console.WriteLine("file complete");
 
-            RawPrinterHelper.SendFileToPrinter(_printerName, "C:\\" + fileName);
+            //RawPrinterHelper.SendFileToPrinter(_printerSpec, "C:\\" + fileName);
         }
 
         private void HandleClientBytesComm(object client)
@@ -115,6 +153,7 @@ namespace PrintListener
                 catch
                 {
                     //a socket error has occured
+                    Console.WriteLine("Socket Error!");
                     break;
                 }
 
@@ -138,7 +177,7 @@ namespace PrintListener
             IntPtr pointer = Marshal.AllocHGlobal(documentByteArray.Length);
             Marshal.Copy(documentByteArray, 0, pointer, documentByteArray.Length);
 
-            RawPrinterHelper.SendBytesToPrinter(_printerName, pointer, documentBytes);
+            RawPrinterHelper.SendBytesToPrinter(_printerSpec, pointer, documentBytes);
 
             Marshal.FreeHGlobal(pointer);
         }

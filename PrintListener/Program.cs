@@ -11,20 +11,19 @@ namespace PrintListener
     {
         static void Main(string[] args)
         {
-            //TODO: Add usage
 
             var argsList = new List<string>(args);
 
             //switch = printer name
             var printerSwitchIndex = argsList.FindIndex(p => p.Contains("-printer"));
+            var printFileOutputPathIndex = argsList.FindIndex(p => p.Contains("-printtofile"));
             var portSwitchIndex = argsList.FindIndex(p => p.Contains("-port"));
 
-            if (printerSwitchIndex < 0 || portSwitchIndex < 0)
+            //Either a -printer parameter or a -printfileto parameter is required.
+            if ((printerSwitchIndex & printFileOutputPathIndex) < 0 || portSwitchIndex < 0)
             {
                 ShowUsage();
             }
-
-            var printerName = argsList[printerSwitchIndex + 1];
 
             var portNumber=0;
             if(!int.TryParse(argsList[portSwitchIndex + 1], out portNumber))
@@ -33,14 +32,28 @@ namespace PrintListener
                 Console.WriteLine("-port must be an integer.");
             }
 
-            Console.WriteLine("Redirecting port {0} to printer {1}", portNumber, printerName);
+            if (printerSwitchIndex != -1)
+            {
+                var printerName = argsList[printerSwitchIndex + 1];
+                Console.WriteLine("Redirecting port {0} to printer {1}", portNumber, printerName);
 
-            Server server = new Server(printerName, portNumber);
+                Server server = new Server(printerName, portNumber, TypeOfPrinter.Raw);
+            }
+
+            if (printFileOutputPathIndex != -1)
+            {
+                var printerName = argsList[printFileOutputPathIndex + 1];
+                Console.WriteLine("Redirecting port {0} to file path {1}", portNumber, printerName);
+
+                Server server = new Server(printerName, portNumber, TypeOfPrinter.File);
+            }
+
         }
 
         static void ShowUsage()
         {
             Console.WriteLine("Usage: PrintListener -printer \"<local printer name>\" -port <port number>");
+            Console.WriteLine("Usage: PrintListener -printtofile \"<filespec>\" -port <port number>");
             System.Environment.Exit(-1);
         }
     }
