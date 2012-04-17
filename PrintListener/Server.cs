@@ -1,40 +1,40 @@
 ﻿using System;
 using System.Collections;
 using System.IO;
+using System.Linq;
+using System.Net;
+using System.Net.Sockets;
 using System.Runtime.InteropServices;
 using System.Text;
-using System.Net.Sockets;
 using System.Threading;
-using System.Net;
 
 namespace PrintListener
 {
     public class Server
     {
-        private TcpListener tcpListener;
-        private Thread listenThread;
+        private readonly TypeOfPrinter _printerType;
+        private readonly Thread listenThread;
+        private readonly TcpListener tcpListener;
         private string _printerSpec;
-        private TypeOfPrinter _printerType;
 
         public Server(string printerSpec, int port, TypeOfPrinter typeOfPrinter)
         {
-
-            this._printerSpec = printerSpec;
-            this._printerType = typeOfPrinter;
-            this.tcpListener = new TcpListener(IPAddress.Any, port);
-            this.listenThread = new Thread(new ThreadStart(ListenForClients));
-            this.listenThread.Start();
+            _printerSpec = printerSpec;
+            _printerType = typeOfPrinter;
+            tcpListener = new TcpListener(IPAddress.Any, port);
+            listenThread = new Thread(ListenForClients);
+            listenThread.Start();
         }
 
         private void ListenForClients()
         {
-            this.tcpListener.Start();
+            tcpListener.Start();
 
             while (true)
             {
                 Console.WriteLine("Ready...");
                 //blocks until a client has connected to the server
-                TcpClient client = this.tcpListener.AcceptTcpClient();
+                TcpClient client = tcpListener.AcceptTcpClient();
 
                 //create a thread to handle communication 
                 //with connected client
@@ -42,32 +42,31 @@ namespace PrintListener
                 switch (_printerType)
                 {
                     case TypeOfPrinter.Raw:
-                        Thread clientThread = new Thread(new ParameterizedThreadStart(HandleClientBytesComm));
+                        var clientThread = new Thread(HandleClientBytesComm);
                         clientThread.Start(client);
                         break;
 
                     case TypeOfPrinter.File:
-                        Thread fileClientThread = new Thread(new ParameterizedThreadStart(HandleClientComm));
+                        var fileClientThread = new Thread(HandleClientComm);
                         fileClientThread.Start(client);
                         break;
                 }
-
             }
         }
 
         private void HandleClientComm(object client)
         {
-            TcpClient tcpClient = (TcpClient)client;
+            var tcpClient = (TcpClient) client;
             NetworkStream clientStream = tcpClient.GetStream();
 
-            byte[] message = new byte[4096];
+            var message = new byte[4096];
             int bytesRead;
             string fileName = Guid.NewGuid().ToString();
-            var firstRead = true;
+            bool firstRead = true;
 
-            if(!this._printerSpec.EndsWith(@"\"))
+            if (!_printerSpec.EndsWith(@"\"))
             {
-                this._printerSpec += @"\";
+                _printerSpec += @"\";
             }
 
             while (true)
@@ -78,15 +77,15 @@ namespace PrintListener
                     bytesRead = clientStream.Read(message, 0, 4096);
 
                     //Inspect first message to try to determine file extension.
-                    if(firstRead)
+                    if (firstRead)
                     {
-                        var firstMessage = System.Text.Encoding.ASCII.GetString(message);
-                        if(firstMessage.StartsWith("BM"))
+                        string firstMessage = Encoding.ASCII.GetString(message);
+                        if (firstMessage.StartsWith("BM"))
                         {
                             fileName += ".bmp";
                         }
 
-                        if(firstMessage.StartsWith("%PDF"))
+                        if (firstMessage.StartsWith("%PDF"))
                         {
                             fileName += ".pdf";
                         }
@@ -94,9 +93,16 @@ namespace PrintListener
                         firstRead = false;
                     }
 
-                    using (FileStream stream = new FileStream(this._printerSpec + fileName, FileMode.Append))
+                    //If actual bytes read are less than the buffer size, then resize array.
+                    if(bytesRead < 4096)
                     {
-                        using (BinaryWriter writer = new BinaryWriter(stream))
+                        var smallMessage = message.AsEnumerable().Take(bytesRead);
+                        message = smallMessage.ToArray();
+                    }
+
+                    using (var stream = new FileStream(_printerSpec + fileName, FileMode.Append))
+                    {
+                        using (var writer = new BinaryWriter(stream))
                         {
                             writer.Write(message);
                             writer.Close();
@@ -117,7 +123,6 @@ namespace PrintListener
                 }
 
                 Console.Write(".");
-
             }
 
             tcpClient.Close();
@@ -128,12 +133,12 @@ namespace PrintListener
 
         private void HandleClientBytesComm(object client)
         {
-            TcpClient tcpClient = (TcpClient) client;
+            var tcpClient = (TcpClient) client;
             NetworkStream clientStream = tcpClient.GetStream();
 
-            byte[] message = new byte[4096];
+            var message = new byte[4096];
             int bytesRead;
-            ArrayList document = new ArrayList();
+            var document = new ArrayList();
             int documentBytes = 0;
 
             Console.Write("Printing...");
@@ -145,7 +150,7 @@ namespace PrintListener
                     //blocks until a client sends a message
                     bytesRead = clientStream.Read(message, 0, 4096);
                     documentBytes += bytesRead;
-                    foreach (var messageByte in message)
+                    foreach (byte messageByte in message)
                     {
                         document.Add(messageByte);
                     }
@@ -164,15 +169,14 @@ namespace PrintListener
                 }
 
                 Console.Write(".");
-
             }
 
             tcpClient.Close();
             Console.Write("file complete");
             Console.WriteLine("");
 
-            byte[] documentByteArray = new byte[document.Count];
-            document.CopyTo(documentByteArray,0);
+            var documentByteArray = new byte[document.Count];
+            document.CopyTo(documentByteArray, 0);
             //Get the unmanaged handle for the byte array
             IntPtr pointer = Marshal.AllocHGlobal(documentByteArray.Length);
             Marshal.Copy(documentByteArray, 0, pointer, documentByteArray.Length);
