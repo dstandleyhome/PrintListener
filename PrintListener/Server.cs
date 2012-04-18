@@ -108,11 +108,15 @@ namespace PrintListener
                             writer.Close();
                         }
                     }
+                    //Re-initialize message in case it has been resized for a smaller message.
+                    message = new byte[4096];
                 }
-                catch
+                catch (Exception ex)
                 {
                     //a socket error has occured
                     Console.WriteLine("Socket Error!");
+                    Console.WriteLine(ex.Message);
+                    Console.WriteLine(ex.StackTrace);
                     break;
                 }
 
@@ -155,10 +159,12 @@ namespace PrintListener
                         document.Add(messageByte);
                     }
                 }
-                catch
+                catch (Exception ex)
                 {
                     //a socket error has occured
                     Console.WriteLine("Socket Error!");
+                    Console.WriteLine(ex.Message);
+                    Console.WriteLine(ex.StackTrace);
                     break;
                 }
 
