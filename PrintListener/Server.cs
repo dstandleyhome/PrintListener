@@ -90,6 +90,11 @@ namespace PrintListener
                             fileName += ".pdf";
                         }
 
+                        if (firstMessage.StartsWith("%-12345X@PJL JOB"))
+                        {
+                            fileName += ".ps";
+                        }
+
                         firstRead = false;
                     }
 
