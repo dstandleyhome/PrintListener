@@ -59,6 +59,8 @@ namespace PrintListener
             var tcpClient = (TcpClient) client;
             NetworkStream clientStream = tcpClient.GetStream();
 
+            Console.WriteLine("Receiving data on: " + ((IPEndPoint)tcpClient.Client.RemoteEndPoint).Address);
+
             var message = new byte[4096];
             int bytesRead;
             string fileName = Guid.NewGuid().ToString();
