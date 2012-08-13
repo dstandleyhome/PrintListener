@@ -97,6 +97,11 @@ namespace PrintListener
                             fileName += ".ps";
                         }
 
+                        if (firstMessage.StartsWith("%!PS"))
+                        {
+                            fileName += ".ps";
+                        }
+
                         firstRead = false;
                     }
 
